@@ -4,7 +4,7 @@ info:
   description: ""
   version: "1.0.0"
 servers:
-  - url: "https://julianodsantos.github.io/product-api/"
+  - url: "https://app.swaggerhub.com/apis/julianodsantos/products-api/1.0.0"
 paths:
   /products:
     post:
