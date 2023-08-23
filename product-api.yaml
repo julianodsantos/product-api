@@ -1,10 +1,10 @@
 openapi: "3.0.3"
 info:
-  title: "Products API RESTful"
+  title: "Products API RESTFUL"
   description: ""
   version: "1.0.0"
 servers:
-  - url: "https://app.swaggerhub.com/apis/julianodsantos/products-api/1.0.0"
+  - url: "https://app.swaggerhub.com/apis-docs/julianodsantos/products-api/1.0.0"
 paths:
   /products:
     post:
