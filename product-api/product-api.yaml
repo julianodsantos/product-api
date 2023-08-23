@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Products API RESTful
+  description: ""
+  version: 1.0.0
+servers:
+- url: https://app.swaggerhub.com/apis-docs/julianodsantos/products-api/1.0.0
+paths:
+  /products:
+    get:
+      summary: GET
+      operationId: getAllProducts
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductModel'
+    post:
+      summary: POST
+      operationId: saveProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRecordDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductModel'
+  /products/{id}:
+    get:
+      summary: GET
+      operationId: getOneProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+    put:
+      summary: PUT
+      operationId: updateProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRecordDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+    delete:
+      summary: DELETE
+      operationId: deleteProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+components:
+  schemas:
+    BigDecimal:
+      type: object
+      properties: {}
+    ProductRecordDto:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+    LinkRelation:
+      type: object
+      properties: {}
+    Link:
+      type: object
+      properties:
+        rel:
+          $ref: '#/components/schemas/LinkRelation'
+        href:
+          type: string
+        hreflang:
+          type: string
+        media:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        deprecation:
+          type: string
+        profile:
+          type: string
+        name:
+          type: string
+    ProductModel:
+      type: object
+      properties:
+        idProduct:
+          type: string
+          format: uuid
+        name:
+          type: string
+        value:
+          $ref: '#/components/schemas/BigDecimal'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    Object:
+      type: object
+      properties: {}
